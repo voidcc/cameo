@@ -22,7 +22,7 @@ class FaceTracker(object):
 		self.minNeighbors = minNeighbors
 		self.flags = flags
 
-		self.faces = []
+		self._faces = []
 
 		self._faceClassifier = cv2.CascadeClassifier(
 			'cascades/haarcascade_frontalface_alt.xml')
@@ -45,7 +45,7 @@ class FaceTracker(object):
 			image = cv2.equalizeHist(image)
 		else:
 			image = cv2.cvtColor(image, cv2.cv.CV_BGR2GRAY)
-			CV2.equalizeHist(image)
+			cv2.equalizeHist(image)
 
 		minSize = utils.widthHeightDividedBy(image, 8)
 
@@ -115,7 +115,7 @@ class FaceTracker(object):
 			rects.outlineRect(image, face.rightEyeRect, rightEyeColor)
 			rects.outlineRect(image, face.noseRect, noseColor)
 			rects.outlineRect(image, face.mouthRect, mouthColor)
-			
+
 
 
 
